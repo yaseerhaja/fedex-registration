@@ -1,0 +1,59 @@
+<div class="register">
+  <section>
+    <mat-card id="registerCnt" class="bwsg-mat-card__register be-loading">
+      <div class="register-form">
+        <div class="title">Registration</div>
+        <form class="register-form-grp" [formGroup]="registerFormGroup">
+          <div class="flex row name">
+            <div class="flex-input">
+              <mat-form-field>
+                <mat-icon class="icon" matPrefix>perm_identity</mat-icon>
+                <input matInput [attr.disabled]="true" placeholder="First Name" type="text" name="firstname" formControlName="firstname"
+                  value="">
+                <mat-error *ngIf="hasError('firstname', 'required')">Required !</mat-error>
+                <mat-error *ngIf="hasError('firstname', 'pattern')">Name contains only Alphabets</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="flex-input">
+              <mat-form-field>
+                <mat-icon class="icon" matPrefix>perm_identity</mat-icon>
+                <input matInput [attr.disabled]="true" placeholder="Last Name" type="text" name="lastname" formControlName="lastname"
+                       value="">
+                <mat-error *ngIf="hasError('lastname', 'required')">Required !</mat-error>
+                <mat-error *ngIf="hasError('lastname', 'pattern')">Name contains only Alphabets</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="flex row email">
+            <div class="flex-input">
+              <mat-form-field>
+                <mat-icon class="icon" matPrefix>password</mat-icon>
+                <input matInput [attr.disabled]="true" autocomplete="on" placeholder="Password" type="password" name="password" formControlName="password"
+                       value="">
+                <mat-error *ngIf="hasError('password', 'required')">Required !</mat-error>
+                <mat-error *ngIf="hasError('password', 'minlength')">Min 8 Characters!</mat-error>
+                <mat-error *ngIf="hasError('password', 'invalid')">Password cant contain First or Last Name</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="flex-input">
+              <mat-form-field>
+                <mat-icon class="icon" matPrefix>email</mat-icon>
+                <input matInput [attr.disabled]="true" placeholder="Email" autocomplete="on" type="email" name="email"
+                  formControlName="email">
+                <mat-error *ngIf="hasError('email', 'required')">Required !</mat-error>
+                <mat-error *ngIf="hasError('email', 'pattern')">Invalid email pattern</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="submit-cnt">
+        <button mat-raised-button (click)="onSubmit($event)" class="" color="accent" type="button">Register</button>
+      </div>
+      <div class="be-spinner"><svg height="40px" viewBox="0 0 66 66" width="40px" xmlns="http://www.w3.org/2000/svg">
+          <circle class="circle" cx="33" cy="33" fill="none" r="30" stroke-linecap="round" stroke-width="4"></circle>
+        </svg></div>
+    </mat-card>
+
+  </section>
+</div>
