@@ -24,7 +24,7 @@
               </mat-form-field>
             </div>
           </div>
-          <div class="flex row email">
+          <div class="flex row passwd">
             <div class="flex-input">
               <mat-form-field>
                 <mat-icon class="icon" matPrefix>password</mat-icon>
@@ -37,9 +37,22 @@
             </div>
             <div class="flex-input">
               <mat-form-field>
+                <mat-icon class="icon" matPrefix>password</mat-icon>
+                <input matInput [attr.disabled]="true" autocomplete="on" placeholder="Confirm Password" type="password" name="confirmpassword" formControlName="confirmpassword"
+                       value="">
+                <mat-error *ngIf="hasError('confirmpassword', 'required')">Required !</mat-error>
+                <mat-error *ngIf="hasError('confirmpassword', 'minlength')">Min 8 Characters!</mat-error>
+                <mat-error *ngIf="hasError('confirmpassword', 'invalid')">Password cant contain First or Last Name</mat-error>
+                <mat-error *ngIf="hasError('confirmpassword', 'invalidpassword')">Password doesnt match!</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="flex row email">
+            <div class="flex-input">
+              <mat-form-field>
                 <mat-icon class="icon" matPrefix>email</mat-icon>
                 <input matInput [attr.disabled]="true" placeholder="Email" autocomplete="on" type="email" name="email"
-                  formControlName="email">
+                       formControlName="email">
                 <mat-error *ngIf="hasError('email', 'required')">Required !</mat-error>
                 <mat-error *ngIf="hasError('email', 'pattern')">Invalid email pattern</mat-error>
               </mat-form-field>

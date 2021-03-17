@@ -17,6 +17,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
     firstname: [''],
     lastname: [''],
     email: [''],
+    password: [''],
+    confirmpassword: ['']
   });
   private unsubscribe$ = new Subject();
   constructor(
@@ -31,6 +33,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
       firstname: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
       lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordCheck()]],
+      confirmpassword: ['', [Validators.required, Validators.minLength(8), this.passwordCheck(), this.confirmPasswordCheck()]],
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]]
     });
   }
@@ -88,6 +91,18 @@ export class ProjectComponent implements OnInit, OnDestroy {
       return null;
     };
   }
+
+  public confirmPasswordCheck(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      const passwd = this.registerFormGroup?.controls.password.value?.trim().toLowerCase();
+      const confirmPasswd = control.value?.trim().toLowerCase();
+      if (passwd !== confirmPasswd) {
+        return { invalidpassword: true };
+      }
+      return null;
+    };
+  }
+
 
   public hasError = (controlName: string, errorName: string) => {
     return this.registerFormGroup.controls[controlName].hasError(errorName);

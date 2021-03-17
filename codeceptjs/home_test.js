@@ -19,6 +19,8 @@ Scenario('Test Application', ({ I }) => {
   I.wait(0.4);
   I.fillField('password', '123er43ert');
   I.wait(0.4);
+  I.fillField('confirmpassword', '123er43ert');
+  I.wait(0.4);
   I.fillField('email','miles@davis.com');
   I.wait(0.4);
 

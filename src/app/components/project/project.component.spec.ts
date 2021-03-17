@@ -55,6 +55,7 @@ describe('ProjectComponent', () => {
     component.registerFormGroup.controls.lastname.setErrors(null);
     component.registerFormGroup.controls.email.setErrors(null);
     component.registerFormGroup.controls.password.setErrors(null);
+    component.registerFormGroup.controls.confirmpassword.setErrors(null);
     component.onSubmit(evt);
     expect(component.registerUser).toHaveBeenCalled();
   });
